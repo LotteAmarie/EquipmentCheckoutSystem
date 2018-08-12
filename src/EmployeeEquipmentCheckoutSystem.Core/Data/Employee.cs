@@ -6,6 +6,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     {
         public int Id { get; set; }
         public IEnumerable<ICheckable> CheckedItems { get; set; }
+        public IEnumerable<ICheckable> RequestedItems { get; set; }
         public IEnumerable<ICheckable> CheckedItemHistory { get; set; }
         public SafetyLevel MaximumSafetyClearance { get; set; }
     }
