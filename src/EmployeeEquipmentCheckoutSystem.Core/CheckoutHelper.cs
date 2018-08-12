@@ -11,7 +11,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             // TODO:
         }
 
-        public void Checkout(Employee Employee, IEnumerable<ICheckable> item)
+        public void Checkout(Employee Employee, IEnumerable<ICheckable> items)
         {
             // TODO:
         }
@@ -21,7 +21,17 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             // TODO:
         }
 
-        public void CheckIn(Employee Employee, IEnumerable<ICheckable> item)
+        public void CheckIn(Employee Employee, IEnumerable<ICheckable> items)
+        {
+            // TODO:
+        }
+
+        public void RequestItem(Employee Employee, ICheckable item)
+        {
+            // TODO:
+        }
+
+        public void RequestItem(Employee Employee, IEnumerable<ICheckable> items)
         {
             // TODO:
         }

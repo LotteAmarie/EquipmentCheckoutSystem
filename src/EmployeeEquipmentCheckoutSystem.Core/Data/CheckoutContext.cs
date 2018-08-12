@@ -5,7 +5,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     /// <summary>
     /// EF Core DbContext for working with Employee Checkouts.
     /// </summary>
-    public class CheckoutContext : DbContext
+    internal class CheckoutContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
