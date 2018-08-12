@@ -4,6 +4,5 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     {
         int SerialNumber { get; set; }
         bool IsAvailable { get; set; }
-        
     }
 }
