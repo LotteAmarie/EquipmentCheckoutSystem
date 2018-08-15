@@ -8,6 +8,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
         public IEnumerable<ICheckable> CheckedItems { get; set; }
         public IEnumerable<ICheckable> RequestedItems { get; set; }
         public IEnumerable<ICheckable> CheckedItemHistory { get; set; }
+        public string EMailAddress { get; set; }
         public SafetyLevel MaximumSafetyClearance { get; set; }
     }
 }
