@@ -77,10 +77,23 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             var service = new CheckoutService(_context);
 
             //When
-            var actual = service.Checkout(001, 100);
+            var result = service.Checkout(001, 100);
 
             //Then
-            Assert.True(actual);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckoutUnsuccessful_WhenItemIsUnavailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.Checkout(001, 300);
+            
+            //Then
+            Assert.False(result);
         }
     }
 }
