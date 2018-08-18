@@ -5,5 +5,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
         int SerialNumber { get; set; }
         string Location { get; set; }
         bool IsAvailable { get; set; }
+        SafetyLevel RequiredSafetyLevel { get; set; }
     }
 }

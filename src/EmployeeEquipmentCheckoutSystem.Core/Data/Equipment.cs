@@ -6,6 +6,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
         public string Location { get; set; }
         public Employee LastCheckedBy { get; set; }
         public bool IsAvailable { get; set; }
-
+        public SafetyLevel RequiredSafetyLevel { get; set; }
     }
 }
