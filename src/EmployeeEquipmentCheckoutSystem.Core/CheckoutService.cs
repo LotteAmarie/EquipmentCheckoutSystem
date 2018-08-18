@@ -4,8 +4,15 @@ using EmployeeEquipmentCheckoutSystem.Core.Data;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
 {
-    public class CheckoutHelper
+    public class CheckoutService
     {
+        private CheckoutContext _context;
+
+        public CheckoutService(CheckoutContext context)
+        {
+            _context = context;
+        }
+
         public void Checkout(Employee Employee, ICheckable item)
         {
             // TODO:
