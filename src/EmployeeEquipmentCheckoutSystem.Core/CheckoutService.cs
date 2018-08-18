@@ -17,8 +17,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool Checkout(int employeeId, int itemSerial)
         {
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+            var employee = _context.Employees.First(e => e.Id == employeeId);
 
-            if (item.IsAvailable)
+            if (item.IsAvailable && employee.MaximumSafetyClearance >= item.RequiredSafetyLevel)
             {
                 return true;
             }

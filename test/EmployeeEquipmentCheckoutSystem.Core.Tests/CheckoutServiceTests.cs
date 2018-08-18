@@ -16,9 +16,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         {
             var equipmentData = new List<Equipment>
             {
-                new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedBy = null, IsAvailable = true },
-                new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedBy = null, IsAvailable = true },
-                new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedBy = null, IsAvailable = false }
+                new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedBy = null, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.A },
+                new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedBy = null, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.B },
+                new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedBy = null, IsAvailable = false, RequiredSafetyLevel = SafetyLevel.C }
             };
             var employeeData = new List<Employee>
             {
@@ -91,6 +91,32 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
             //When
             var result = service.Checkout(001, 300);
+            
+            //Then
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CheckoutSuccessful_WhenEmployeeMeetsSafetyRequirement()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.Checkout(001, 100);
+            
+            //Then
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckoutUnsuccessful_WhenEmployeeFailsSafetyRequirement()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.Checkout(002, 100);
             
             //Then
             Assert.False(result);
