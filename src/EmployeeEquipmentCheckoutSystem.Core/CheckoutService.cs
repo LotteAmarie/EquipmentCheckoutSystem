@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EmployeeEquipmentCheckoutSystem.Core.Data;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
@@ -13,32 +14,39 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             _context = context;
         }
 
-        public void Checkout(Employee Employee, ICheckable item)
+        public bool Checkout(int employeeId, int itemSerial)
+        {
+            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+
+            if (item.IsAvailable)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Checkout(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
         }
 
-        public void Checkout(Employee Employee, IEnumerable<ICheckable> items)
+        public void CheckIn(int employeeId, int itemSerial)
         {
             // TODO:
         }
 
-        public void CheckIn(Employee Employee, ICheckable item)
+        public void CheckIn(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
         }
 
-        public void CheckIn(Employee Employee, IEnumerable<ICheckable> items)
+        public void RequestItem(int employeeId, int itemSerial)
         {
             // TODO:
         }
 
-        public void RequestItem(Employee Employee, ICheckable item)
-        {
-            // TODO:
-        }
-
-        public void RequestItem(Employee Employee, IEnumerable<ICheckable> items)
+        public void RequestItem(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
         }

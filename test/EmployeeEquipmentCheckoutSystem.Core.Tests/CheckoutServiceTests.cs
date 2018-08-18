@@ -19,7 +19,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                 new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedBy = null, IsAvailable = true },
                 new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedBy = null, IsAvailable = true },
                 new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedBy = null, IsAvailable = false }
-            }.AsQueryable();
+            };
             var employeeData = new List<Employee>
             {
                 new Employee 
@@ -49,34 +49,38 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                     EMailAddress = "003@gmail.com",
                     MaximumSafetyClearance = SafetyLevel.C
                 }
-            }.AsQueryable();
+            };
+          
+            _context = Mock.Of<CheckoutContext>(m => 
+                m.Equipment == GetQueryableMockDbSet(equipmentData) &&
+                m.Employees == GetQueryableMockDbSet(employeeData));
+        }
 
-            var mockEquipment = new Mock<DbSet<Equipment>>();
-            mockEquipment.As<IQueryable<Equipment>>().Setup(m => m.Provider).Returns(equipmentData.Provider);
-            mockEquipment.As<IQueryable<Equipment>>().Setup(m => m.Expression).Returns(equipmentData.Expression);
-            mockEquipment.As<IQueryable<Equipment>>().Setup(m => m.ElementType).Returns(equipmentData.ElementType);
-            mockEquipment.As<IQueryable<Equipment>>().Setup(m => m.GetEnumerator()).Returns(equipmentData.GetEnumerator());
-            var mockEmployees = new Mock<DbSet<Employee>>();
-            mockEmployees.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(employeeData.Provider);
-            mockEmployees.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(employeeData.Expression);
-            mockEmployees.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(employeeData.ElementType);
-            mockEmployees.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(employeeData.GetEnumerator());
+        private static DbSet<T> GetQueryableMockDbSet<T>(List<T> sourceList) where T : class
+        {
+            var queryable = sourceList.AsQueryable();
 
-            var mockContext = new Mock<CheckoutContext>();
-            mockContext.Setup(m => m.Employees).Returns(mockEmployees.Object);
-            mockContext.Setup(m => m.Equipment).Returns(mockEquipment.Object);
+            var dbSet = new Mock<DbSet<T>>();
+            dbSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(queryable.Provider);
+            dbSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
+            dbSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
+            dbSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
+            dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>((s) => sourceList.Add(s));
 
-            _context = mockContext.Object;
+            return dbSet.Object;
         }
 
         [Fact]
         public void CheckoutSuccessful_WhenItemIsAvailable()
         {
             //Given
+            var service = new CheckoutService(_context);
 
             //When
-            
+            var actual = service.Checkout(001, 100);
+
             //Then
+            Assert.True(actual);
         }
     }
 }
