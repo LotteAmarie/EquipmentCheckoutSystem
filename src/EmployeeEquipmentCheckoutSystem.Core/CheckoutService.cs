@@ -68,7 +68,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             var employee = _context.Employees.First(e => e.Id == employeeId);
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
-            if (!item.IsAvailable && !item.RequestedByIds.Contains(employeeId))
+            if (!item.IsAvailable && !item.RequestedByIds.Contains(employeeId) && employee.MaximumSafetyClearance >= item.RequiredSafetyLevel)
             {
                 item.RequestedByIds.Add(employeeId);
 

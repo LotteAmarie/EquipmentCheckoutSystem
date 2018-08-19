@@ -70,6 +70,14 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                     CheckedItemHistory = new List<ICheckable> { },
                     EMailAddress = "003@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.C
+                },
+                new Employee
+                {
+                    Id = 004,
+                    CheckedItems = new List<ICheckable> { },
+                    CheckedItemHistory = new List<ICheckable> { },
+                    EMailAddress = "004@somewhere.com",
+                    MaximumSafetyClearance = SafetyLevel.D
                 }
             };
           
@@ -347,6 +355,18 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             service.RequestItem(002, 300);
             var result = service.RequestItem(002, 300);
             
+            //Then
+            Assert.False(result);
+        }
+        [Fact]
+        public void RequestItem_FailsUponWithInsufficientSecurityLevel()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.RequestItem(004, 300);
+
             //Then
             Assert.False(result);
         }
