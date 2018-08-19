@@ -48,6 +48,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             {
                 item.IsAvailable = true;
                 employee.CheckedItems.Remove(item);
+                employee.CheckedItemHistory.Add(item);
 
                 _context.SaveChanges();
                 return true;

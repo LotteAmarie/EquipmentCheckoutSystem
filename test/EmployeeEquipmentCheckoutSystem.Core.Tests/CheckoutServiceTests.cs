@@ -238,6 +238,21 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         }
 
         [Fact]
+        public void CheckIn_AddsItemToEmployeeCheckedItemsHistory()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = _context.Employees.First(e => e.Id == 003);
+            var item = _context.Equipment.First(e => e.SerialNumber == 300);
+
+            //When
+            service.CheckIn(003, 300);
+            
+            //Then
+            Assert.True(employee.CheckedItemHistory.Contains(item));
+        }
+
+        [Fact]
         public void CheckIn_ContactsWaitList()
         {
             // TODO: https://stackoverflow.com/questions/7766083/unit-test-check-if-a-method-is-being-called#7766839
