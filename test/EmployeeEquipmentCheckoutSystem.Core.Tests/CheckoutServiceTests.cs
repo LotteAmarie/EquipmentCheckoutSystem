@@ -17,9 +17,33 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             // TODO: Consider refactoring data lists.
             var equipmentData = new List<Equipment>
             {
-                new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedById = 0, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.A },
-                new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedById = 0, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.B },
-                new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedById = 003, IsAvailable = false, RequiredSafetyLevel = SafetyLevel.C }
+                new Equipment 
+                { 
+                    SerialNumber = 100, 
+                    Location = "Warehouse 1", 
+                    LastCheckedById = 0, 
+                    RequestedByIds = new List<int> { },
+                    IsAvailable = true, 
+                    RequiredSafetyLevel = SafetyLevel.A 
+                },
+                new Equipment 
+                { 
+                    SerialNumber = 200, 
+                    Location = "Warehouse 2", 
+                    LastCheckedById = 0, 
+                    RequestedByIds = new List<int> { },
+                    IsAvailable = true, 
+                    RequiredSafetyLevel = SafetyLevel.B 
+                },
+                new Equipment 
+                { 
+                    SerialNumber = 300, 
+                    Location = "Warehouse 3", 
+                    LastCheckedById = 003, 
+                    RequestedByIds = new List<int> { },
+                    IsAvailable = false, 
+                    RequiredSafetyLevel = SafetyLevel.C 
+                }
             };
             var employeeData = new List<Employee>
             {
@@ -281,6 +305,47 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //When
             var result = service.RequestItem(002, 200);
+            
+            //Then
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void RequestItem_SuccessfulWhenItemIsUnavailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.RequestItem(002, 300);
+            
+            //Then
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void RequestItem_AddsEmployeeIdToRequestedById()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var item = _context.Equipment.First(e => e.SerialNumber == 300);
+
+            //When
+            service.RequestItem(002, 300);
+            
+            //Then
+            Assert.True(item.RequestedByIds.Contains(002));
+        }
+
+        [Fact]
+        public void RequestItem_FailsUponDuplicateEmployeeRequest()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            service.RequestItem(002, 300);
+            var result = service.RequestItem(002, 300);
             
             //Then
             Assert.False(result);

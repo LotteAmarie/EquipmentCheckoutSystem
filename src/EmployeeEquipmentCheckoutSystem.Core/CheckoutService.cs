@@ -70,6 +70,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
             if (!item.IsAvailable)
             {
+                item.RequestedByIds.Add(employeeId);
+
+                _context.SaveChanges();
                 return true;
             }
 

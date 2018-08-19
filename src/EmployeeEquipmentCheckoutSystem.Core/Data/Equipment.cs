@@ -10,7 +10,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
         public int LastCheckedById { get; set; }
         public bool IsAvailable { get; set; }
         // TODO: Band-aid fix, look into FK relationships in EF Core
-        public List<int> RequestedById { get; set; }
+        public List<int> RequestedByIds { get; set; }
         public SafetyLevel RequiredSafetyLevel { get; set; }
     }
 }
