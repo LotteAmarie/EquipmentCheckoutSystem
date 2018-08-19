@@ -182,6 +182,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         }
 
         [Fact]
+        public void CheckIn_UnsuccessfulWhenItemIsAvailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.CheckIn(003, 200);
+
+            //Then
+            Assert.False(result);
+        }
+
+        [Fact]
         public void CheckIn_FailsWithIncorrectEmployeeId()
         {
             //Given
@@ -192,6 +205,21 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //Then
             Assert.False(result);
+        }
+
+        [Fact]
+        public void CheckIn_MarksItemAvailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var expected = true;
+
+            //When
+            service.CheckIn(003, 300);
+            var actual = _context.Equipment.First(e => e.SerialNumber == 300).IsAvailable;
+            
+            //Then
+            Assert.Equal(expected, actual);
         }
     }
 }

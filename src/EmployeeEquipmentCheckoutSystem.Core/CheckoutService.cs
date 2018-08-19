@@ -46,6 +46,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
+                item.IsAvailable = true;
+
+                _context.SaveChanges();
                 return true;
             }
 
