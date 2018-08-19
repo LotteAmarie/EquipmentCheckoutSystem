@@ -172,10 +172,13 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         public void CheckIn_SuccessfulWhenItemIsUnavailable()
         {
             //Given
-            
+            var service = new CheckoutService(_context);
+
             //When
-            
+            var result = service.CheckIn(003, 300);
+
             //Then
+            Assert.True(result);
         }
     }
 }

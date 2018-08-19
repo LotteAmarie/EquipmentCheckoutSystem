@@ -33,19 +33,29 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             return false;
         }
 
-        public void Checkout(int employeeId, IEnumerable<int> itemSerials)
+        public bool Checkout(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
+            throw new NotImplementedException();
         }
 
-        public void CheckIn(int employeeId, int itemSerial)
+        public bool CheckIn(int employeeId, int itemSerial)
         {
-            // TODO:
+            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+            var employee = _context.Employees.First(e => e.Id == employeeId);
+
+            if (!item.IsAvailable)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void CheckIn(int employeeId, IEnumerable<int> itemSerials)
+        public bool CheckIn(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
+            throw new NotImplementedException();
         }
 
         public void RequestItem(int employeeId, int itemSerial)
