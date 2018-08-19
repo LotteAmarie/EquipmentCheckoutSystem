@@ -6,7 +6,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     {
         public int Id { get; set; }
         public List<ICheckable> CheckedItems { get; set; }
-        //TODO: Checked Item History should likely contain data about time. Possibly just use a tuple here?
+        // TODO: Checked Item History should likely contain data about time. Possibly just use a tuple here?
         public List<ICheckable> CheckedItemHistory { get; set; }
         // TODO: Contact method interface
         public string EMailAddress { get; set; }
