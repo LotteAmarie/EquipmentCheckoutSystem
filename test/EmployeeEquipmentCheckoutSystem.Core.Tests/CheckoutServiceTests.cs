@@ -29,7 +29,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                     CheckedItems = new List<ICheckable> { },
                     RequestedItems = new List<ICheckable> { },
                     CheckedItemHistory = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 100) },
-                    EMailAddress = "001@gmail.com",
+                    EMailAddress = "001@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.A
                 },
                 new Employee
@@ -38,7 +38,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                     CheckedItems = new List<ICheckable> { },
                     RequestedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
                     CheckedItemHistory = new List<ICheckable> { },
-                    EMailAddress = "002@gmail.com",
+                    EMailAddress = "002@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.B
                 },
                 new Employee 
@@ -47,7 +47,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                     CheckedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
                     RequestedItems = new List<ICheckable> { },
                     CheckedItemHistory = new List<ICheckable> { },
-                    EMailAddress = "003@gmail.com",
+                    EMailAddress = "003@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.C
                 }
             };
@@ -220,6 +220,32 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //Then
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CheckIn_RemovesItemFromEmployeeCheckedItems()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = _context.Employees.First(e => e.Id == 003);
+            var item = _context.Equipment.First(e => e.SerialNumber == 300);
+
+            //When
+            service.CheckIn(003, 300);
+            
+            //Then
+            Assert.False(employee.CheckedItems.Contains(item));
+        }
+
+        [Fact]
+        public void CheckIn_ContactsWaitList()
+        {
+            // TODO: https://stackoverflow.com/questions/7766083/unit-test-check-if-a-method-is-being-called#7766839
+            //Given
+            
+            //When
+            
+            //Then
         }
     }
 }

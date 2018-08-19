@@ -47,6 +47,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
                 item.IsAvailable = true;
+                employee.CheckedItems.Remove(item);
 
                 _context.SaveChanges();
                 return true;
