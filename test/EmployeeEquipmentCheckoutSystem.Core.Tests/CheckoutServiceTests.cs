@@ -27,7 +27,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                 {
                     Id = 001,
                     CheckedItems = new List<ICheckable> { },
-                    RequestedItems = new List<ICheckable> { },
                     CheckedItemHistory = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 100) },
                     EMailAddress = "001@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.A
@@ -36,7 +35,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                 {
                     Id = 002,
                     CheckedItems = new List<ICheckable> { },
-                    RequestedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
                     CheckedItemHistory = new List<ICheckable> { },
                     EMailAddress = "002@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.B
@@ -45,7 +43,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                 { 
                     Id = 003,
                     CheckedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
-                    RequestedItems = new List<ICheckable> { },
                     CheckedItemHistory = new List<ICheckable> { },
                     EMailAddress = "003@somewhere.com",
                     MaximumSafetyClearance = SafetyLevel.C
@@ -206,6 +203,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.False(result);
         }
+        
+        [Fact]
+        public void CheckIn_SuccessfulWithCorrectEmployeeId()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.CheckIn(003, 300);
+            
+            //Then
+            Assert.True(result);
+        }
 
         [Fact]
         public void CheckIn_MarksItemAvailable()
@@ -261,6 +271,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //When
             
             //Then
+        }
+
+        [Fact]
+        public void RequestItem_FailsWhenItemAvailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            
+            //When
+            var result = service.RequestItem(002, 200);
+            
+            //Then
+            Assert.False(result);
         }
     }
 }

@@ -63,14 +63,23 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             throw new NotImplementedException();
         }
 
-        public void RequestItem(int employeeId, int itemSerial)
+        public bool RequestItem(int employeeId, int itemSerial)
         {
-            // TODO:
+            var employee = _context.Employees.First(e => e.Id == employeeId);
+            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+
+            if (!item.IsAvailable)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public void RequestItem(int employeeId, IEnumerable<int> itemSerials)
+        public bool RequestItem(int employeeId, IEnumerable<int> itemSerials)
         {
             // TODO:
+            throw new NotImplementedException();
         }
     }
 }
