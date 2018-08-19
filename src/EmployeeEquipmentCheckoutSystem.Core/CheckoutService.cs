@@ -23,6 +23,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             {
                 employee.CheckedItems.Add(item);
                 item.IsAvailable = false;
+                item.LastCheckedBy = employee;
 
                 _context.SaveChanges();
 

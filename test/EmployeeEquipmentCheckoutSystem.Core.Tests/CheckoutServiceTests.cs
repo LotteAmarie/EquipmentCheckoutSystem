@@ -14,6 +14,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
         public CheckoutServiceTests()
         {
+            // TODO: Consider refactoring data lists.
             var equipmentData = new List<Equipment>
             {
                 new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedBy = null, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.A },
@@ -150,6 +151,31 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //Then
             Assert.True(employee.CheckedItems.Contains(item));
+        }
+
+        [Fact]
+        public void Checkout_AddsEmployeeLastCheckedBy()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var expected = _context.Employees.First(e => e.Id == 001).Id;
+
+            //When
+            service.Checkout(001, 100);
+            var actual = _context.Equipment.First(e => e.SerialNumber == 100).LastCheckedBy.Id;
+
+            //Then
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CheckIn_SuccessfulWhenItemIsUnavailable()
+        {
+            //Given
+            
+            //When
+            
+            //Then
         }
     }
 }
