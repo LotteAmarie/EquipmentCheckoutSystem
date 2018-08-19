@@ -21,7 +21,10 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
             if (item.IsAvailable && employee.MaximumSafetyClearance >= item.RequiredSafetyLevel)
             {
+                employee.CheckedItems.Add(item);
                 item.IsAvailable = false;
+
+                _context.SaveChanges();
 
                 return true;
             }

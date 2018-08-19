@@ -25,27 +25,27 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
                 new Employee 
                 {
                     Id = 001,
-                    CheckedItems = new List<Equipment> { },
-                    RequestedItems = new List<Equipment> { },
-                    CheckedItemHistory = new List<Equipment> { equipmentData.First(e => e.SerialNumber == 100) },
+                    CheckedItems = new List<ICheckable> { },
+                    RequestedItems = new List<ICheckable> { },
+                    CheckedItemHistory = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 100) },
                     EMailAddress = "001@gmail.com",
                     MaximumSafetyClearance = SafetyLevel.A
                 },
                 new Employee
                 {
                     Id = 002,
-                    CheckedItems = new List<Equipment> { },
-                    RequestedItems = new List<Equipment> { equipmentData.First(e => e.SerialNumber == 300) },
-                    CheckedItemHistory = new List<Equipment> { },
+                    CheckedItems = new List<ICheckable> { },
+                    RequestedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
+                    CheckedItemHistory = new List<ICheckable> { },
                     EMailAddress = "002@gmail.com",
                     MaximumSafetyClearance = SafetyLevel.B
                 },
                 new Employee 
                 { 
                     Id = 003,
-                    CheckedItems = new List<Equipment> { equipmentData.First(e => e.SerialNumber == 300) },
-                    RequestedItems = new List<Equipment> { },
-                    CheckedItemHistory = new List<Equipment> { },
+                    CheckedItems = new List<ICheckable> { equipmentData.First(e => e.SerialNumber == 300) },
+                    RequestedItems = new List<ICheckable> { },
+                    CheckedItemHistory = new List<ICheckable> { },
                     EMailAddress = "003@gmail.com",
                     MaximumSafetyClearance = SafetyLevel.C
                 }
@@ -135,6 +135,21 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //Then
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Checkout_AddsItemToEmployeeCheckedItems()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = _context.Employees.First(e => e.Id == 001);
+            var item = _context.Equipment.First(e => e.SerialNumber == 100);
+
+            //When
+            service.Checkout(001, 100);
+            
+            //Then
+            Assert.True(employee.CheckedItems.Contains(item));
         }
     }
 }
