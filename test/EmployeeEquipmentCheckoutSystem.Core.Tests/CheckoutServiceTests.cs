@@ -121,5 +121,20 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.False(result);
         }
+
+        [Fact]
+        public void Checkout_MarksItemAsUnavailable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var expected = false;
+
+            //When
+            service.Checkout(001, 100);
+            var actual = _context.Equipment.First(e => e.SerialNumber == 100).IsAvailable;
+            
+            //Then
+            Assert.Equal(expected, actual);
+        }
     }
 }
