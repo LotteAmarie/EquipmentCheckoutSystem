@@ -17,9 +17,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             // TODO: Consider refactoring data lists.
             var equipmentData = new List<Equipment>
             {
-                new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedBy = null, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.A },
-                new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedBy = null, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.B },
-                new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedBy = null, IsAvailable = false, RequiredSafetyLevel = SafetyLevel.C }
+                new Equipment { SerialNumber = 100, Location = "Warehouse 1", LastCheckedById = 0, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.A },
+                new Equipment { SerialNumber = 200, Location = "Warehouse 2", LastCheckedById = 0, IsAvailable = true, RequiredSafetyLevel = SafetyLevel.B },
+                new Equipment { SerialNumber = 300, Location = "Warehouse 3", LastCheckedById = 003, IsAvailable = false, RequiredSafetyLevel = SafetyLevel.C }
             };
             var employeeData = new List<Employee>
             {
@@ -162,7 +162,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
             //When
             service.Checkout(001, 100);
-            var actual = _context.Equipment.First(e => e.SerialNumber == 100).LastCheckedBy.Id;
+            var actual = _context.Equipment.First(e => e.SerialNumber == 100).LastCheckedById;
 
             //Then
             Assert.Equal(expected, actual);
@@ -179,6 +179,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
             //Then
             Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckIn_FailsWithIncorrectEmployeeId()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            var result = service.CheckIn(002, 300);
+            
+            //Then
+            Assert.False(result);
         }
     }
 }

@@ -4,7 +4,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     {
         public int SerialNumber { get; set; }
         public string Location { get; set; }
-        public Employee LastCheckedBy { get; set; }
+        // TODO: Band-aid fix, look into FK relationships in EF Core
+        public int LastCheckedById { get; set; }
         public bool IsAvailable { get; set; }
         public SafetyLevel RequiredSafetyLevel { get; set; }
     }

@@ -23,7 +23,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             {
                 employee.CheckedItems.Add(item);
                 item.IsAvailable = false;
-                item.LastCheckedBy = employee;
+                item.LastCheckedById = employee.Id;
 
                 _context.SaveChanges();
 
@@ -44,7 +44,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
             var employee = _context.Employees.First(e => e.Id == employeeId);
 
-            if (!item.IsAvailable)
+            if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
                 return true;
             }
