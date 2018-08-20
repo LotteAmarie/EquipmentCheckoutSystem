@@ -98,5 +98,17 @@ namespace EmployeeEquipmentCheckoutSystem.Core
                 throw new ArgumentException("Invalid employee ID given.", ex);
             }
         }
+
+        public Equipment GetEquipmentBySerial(int serial)
+        {
+            try
+            {
+                return _context.Equipment.Single(e => e.SerialNumber == serial);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new ArgumentException("Invalid employee ID given.", ex);
+            }
+        }
     }
 }
