@@ -16,7 +16,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public bool Checkout(int employeeId, int itemSerial)
         {
-            var employee = _context.Employees.First(e => e.Id == employeeId);
+            var employee = GetEmployeeById(employeeId);
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
             if (item.IsAvailable && employee.IsAuthorizedFor(item))
@@ -41,7 +41,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public bool CheckIn(int employeeId, int itemSerial)
         {
-            var employee = _context.Employees.First(e => e.Id == employeeId);
+            var employee = GetEmployeeById(employeeId);
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
@@ -65,7 +65,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public bool RequestItem(int employeeId, int itemSerial)
         {
-            var employee = _context.Employees.First(e => e.Id == employeeId);
+            var employee = GetEmployeeById(employeeId);
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
             if (!item.IsAvailable && 
@@ -98,7 +98,5 @@ namespace EmployeeEquipmentCheckoutSystem.Core
                 throw new ArgumentException("Invalid employee ID given.", ex);
             }
         }
-
-
     }
 }
