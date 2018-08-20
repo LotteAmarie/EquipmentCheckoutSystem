@@ -16,10 +16,10 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public bool Checkout(int employeeId, int itemSerial)
         {
-            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
             var employee = _context.Employees.First(e => e.Id == employeeId);
+            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
-            if (item.IsAvailable && employee.MaximumSafetyClearance >= item.RequiredSafetyLevel)
+            if (item.IsAvailable && employee.IsAuthorizedFor(item))
             {
                 employee.CheckedItems.Add(item);
                 item.IsAvailable = false;
@@ -41,8 +41,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public bool CheckIn(int employeeId, int itemSerial)
         {
-            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
             var employee = _context.Employees.First(e => e.Id == employeeId);
+            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
@@ -68,7 +68,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             var employee = _context.Employees.First(e => e.Id == employeeId);
             var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
 
-            if (!item.IsAvailable && !item.RequestedByIds.Contains(employeeId) && employee.MaximumSafetyClearance >= item.RequiredSafetyLevel)
+            if (!item.IsAvailable && 
+                !item.RequestedByIds.Contains(employeeId) && 
+                employee.IsAuthorizedFor(item))
             {
                 item.RequestedByIds.Add(employeeId);
 
