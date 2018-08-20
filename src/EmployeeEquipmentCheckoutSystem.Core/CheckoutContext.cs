@@ -8,7 +8,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
     public class CheckoutContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<ICheckable> Equipment { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,7 +17,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Equipment>()
+            modelBuilder.Entity<ICheckable>()
                 .HasKey(c => c.SerialNumber);
         }
     }

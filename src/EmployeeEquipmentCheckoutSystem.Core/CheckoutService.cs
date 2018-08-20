@@ -87,6 +87,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             throw new NotImplementedException();
         }
 
+        /// <exception cref="System.ArgumentException">Thrown when given invalid id</exception>
         public Employee GetEmployeeById(int id)
         {
             try
@@ -99,12 +100,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="serial">item's serial number</param>
-        /// <returns></returns>
-        /// <throws>ArgumentException</throws>
+        /// <exception cref="System.ArgumentException">Thrown when given invalid serial</exception>
         public ICheckable GetCheckableBySerial(int serial)
         {
             try
@@ -115,6 +111,17 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             {
                 throw new ArgumentException("Invalid employee ID given.", ex);
             }
+        }
+
+        public void AddEmployee(Employee employee)
+        {
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+        }
+
+        public void AddCheckable(ICheckable checkable)
+        {
+
         }
     }
 }

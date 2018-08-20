@@ -16,7 +16,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         public CheckoutServiceTests()
         {
             // TODO: Consider refactoring data lists.
-            var equipmentData = new List<Equipment>
+            var equipmentData = new List<ICheckable>
             {
                 new Equipment 
                 { 
@@ -438,6 +438,32 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.Throws<ArgumentException>(act);
         }
+        #endregion
+        #region AddEmployee
+        [Fact]
+        public void AddEmployee_SuccessfullyAddsEmployee()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = new Employee
+            {
+                Id = 005,
+                CheckedItems = new List<ICheckable> { },
+                CheckedItemHistory = new List<ICheckable> { },
+                EMailAddress = "005@somewhere.com",
+                MaximumSafetyClearance = SafetyLevel.C
+            };
+
+            //When
+            service.AddEmployee(employee);
+            
+            //Then
+            Assert.Contains(employee, _context.Employees);
+        }
+        
+        #endregion
+        #region AddCheckable
+
         #endregion
     }
 }
