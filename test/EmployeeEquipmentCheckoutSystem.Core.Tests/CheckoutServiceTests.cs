@@ -359,7 +359,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             Assert.False(result);
         }
         [Fact]
-        public void RequestItem_FailsUponWithInsufficientSecurityLevel()
+        public void RequestItem_FailsUponRequestWithInsufficientSecurityLevel()
         {
             //Given
             var service = new CheckoutService(_context);
