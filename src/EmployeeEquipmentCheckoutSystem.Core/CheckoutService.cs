@@ -124,7 +124,11 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public void AddCheckable(ICheckable checkable)
         {
+            if (_context.Equipment.Any(e => e.SerialNumber == checkable.SerialNumber))
+                throw new ArgumentException("Cannot enter duplicate checkable");
 
+            _context.Equipment.Add(checkable);
+            _context.SaveChanges();
         }
     }
 }

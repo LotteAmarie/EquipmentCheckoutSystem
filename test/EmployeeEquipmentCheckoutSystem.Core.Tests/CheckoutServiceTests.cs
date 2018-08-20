@@ -483,7 +483,48 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
         #endregion
         #region AddCheckable
+        [Fact]
+        public void AddCheckable_SuccessfullyAddsCheckable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var item = new Equipment 
+            { 
+                SerialNumber = 900, 
+                Location = "Warehouse 1", 
+                LastCheckedById = 0, 
+                RequestedByIds = new List<int> { },
+                IsAvailable = true, 
+                RequiredSafetyLevel = SafetyLevel.A 
+            };
 
+            //When
+            service.AddCheckable(item);
+
+            //Then
+            Assert.Contains(item, _context.Equipment);
+        }
+        [Fact]
+        public void AddCheckable_ThrowsArgumentExceptionOnSerialCollision()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var item = new Equipment 
+            { 
+                SerialNumber = 300, 
+                Location = "Warehouse 1", 
+                LastCheckedById = 0, 
+                RequestedByIds = new List<int> { },
+                IsAvailable = true, 
+                RequiredSafetyLevel = SafetyLevel.A 
+            };
+            
+            //When
+            Action act = () => service.AddCheckable(item);
+            
+            //Then
+            Assert.Throws<ArgumentException>(act);
+        }
         #endregion
     }
 }
