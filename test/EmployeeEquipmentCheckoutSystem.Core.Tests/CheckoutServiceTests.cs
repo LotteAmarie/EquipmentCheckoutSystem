@@ -10,6 +10,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 {
     public class CheckoutServiceTests 
     {
+        #region TestSetup
         private CheckoutContext _context;
 
         public CheckoutServiceTests()
@@ -100,6 +101,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             return dbSet.Object;
         }
 
+        #endregion
+        #region CheckoutTests
         [Fact]
         public void CheckoutSuccessful_WhenItemIsAvailable()
         {
@@ -196,7 +199,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.Equal(expected, actual);
         }
-
+        #endregion
+        #region CheckInTests
         [Fact]
         public void CheckIn_SuccessfulWhenItemIsUnavailable()
         {
@@ -304,7 +308,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             
             //Then
         }
-
+        #endregion
+        #region RequestItemTests
         [Fact]
         public void RequestItem_FailsWhenItemAvailable()
         {
@@ -370,5 +375,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.False(result);
         }
+        #endregion
     }
 }
