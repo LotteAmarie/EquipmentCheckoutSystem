@@ -86,5 +86,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             // TODO:
             throw new NotImplementedException();
         }
+
+        public Employee GetEmployeeById(int id)
+        {
+            try
+            {
+                return _context.Employees.Single(e => e.Id == id);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new ArgumentException("Invalid employee ID given.", ex);
+            }
+        }
+
+
     }
 }

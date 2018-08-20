@@ -376,5 +376,35 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             Assert.False(result);
         }
         #endregion
+        #region GetEmployeeByIdTests
+        [Fact]
+        public void GetEmployeeById_ReturnsCorrectEmployee()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var expected = _context.Employees.Single(e => e.Id == 001);
+
+            //When
+            var actual = service.GetEmployeeById(001);
+            
+            //Then
+            Assert.Equal(expected.Id, actual.Id);
+            Assert.Equal(expected.EMailAddress, actual.EMailAddress);
+            Assert.Equal(expected.MaximumSafetyClearance, actual.MaximumSafetyClearance);
+        }
+        
+        [Fact]
+        public void GetEmployeeById_ThrowsInvalidArgumentExceptionGivenNonexistantId()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            Action act = () => service.GetEmployeeById(009);
+            
+            //Then
+            Assert.Throws<ArgumentException>(act);
+        }
+        #endregion
     }
 }
