@@ -388,6 +388,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             var actual = service.GetEmployeeById(001);
             
             //Then
+            // TODO: Consider overloading equality on employee
             Assert.Equal(expected.Id, actual.Id);
             Assert.Equal(expected.EMailAddress, actual.EMailAddress);
             Assert.Equal(expected.MaximumSafetyClearance, actual.MaximumSafetyClearance);
@@ -401,6 +402,38 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
 
             //When
             Action act = () => service.GetEmployeeById(009);
+            
+            //Then
+            Assert.Throws<ArgumentException>(act);
+        }
+        #endregion
+        #region GetEquipmentBySerialTests
+        [Fact]
+        public void GetEquipmentBySerial_ReturnsCorrectEquipment()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var expected = _context.Equipment.Single(e => e.SerialNumber == 100);
+
+            //When
+            var actual = service.GetEquipmentBySerial(100);
+
+            //Then
+            // TODO: consider overloading equality on equipment
+            Assert.Equal(expected.SerialNumber, actual.SerialNumber);
+            Assert.Equal(expected.Location, actual.Location);
+            Assert.Equal(expected.LastCheckedById, actual.LastCheckedById);
+            Assert.Equal(expected.IsAvailable, actual.IsAvailable);
+            Assert.Equal(expected.RequiredSafetyLevel, actual.RequiredSafetyLevel);
+        }
+        [Fact]
+        public void GetEquipmentBySerial_ThrowsInvalidArgumentExceptionGivenNonexistantSerial()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+
+            //When
+            Action act = () => service.GetEquipmentBySerial(009);
             
             //Then
             Assert.Throws<ArgumentException>(act);
