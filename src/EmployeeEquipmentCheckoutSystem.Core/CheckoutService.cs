@@ -17,7 +17,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool Checkout(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+            var item = GetEquipmentBySerial(itemSerial);
 
             if (item.IsAvailable && employee.IsAuthorizedFor(item))
             {
@@ -42,7 +42,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool CheckIn(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+            var item = GetEquipmentBySerial(itemSerial);
 
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
@@ -66,7 +66,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool RequestItem(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = _context.Equipment.First(e => e.SerialNumber == itemSerial);
+            var item = GetEquipmentBySerial(itemSerial);
 
             if (!item.IsAvailable && 
                 !item.RequestedByIds.Contains(employeeId) && 
