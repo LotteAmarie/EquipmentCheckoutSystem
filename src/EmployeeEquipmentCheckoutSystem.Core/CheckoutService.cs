@@ -17,7 +17,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool Checkout(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = GetEquipmentBySerial(itemSerial);
+            var item = GetCheckableBySerial(itemSerial);
 
             if (item.IsAvailable && employee.IsAuthorizedFor(item))
             {
@@ -42,7 +42,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool CheckIn(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = GetEquipmentBySerial(itemSerial);
+            var item = GetCheckableBySerial(itemSerial);
 
             if (!item.IsAvailable && item.LastCheckedById == employeeId)
             {
@@ -66,7 +66,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core
         public bool RequestItem(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
-            var item = GetEquipmentBySerial(itemSerial);
+            var item = GetCheckableBySerial(itemSerial);
 
             if (!item.IsAvailable && 
                 !item.RequestedByIds.Contains(employeeId) && 
@@ -99,7 +99,13 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             }
         }
 
-        public Equipment GetEquipmentBySerial(int serial)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serial">item's serial number</param>
+        /// <returns></returns>
+        /// <throws>ArgumentException</throws>
+        public ICheckable GetCheckableBySerial(int serial)
         {
             try
             {

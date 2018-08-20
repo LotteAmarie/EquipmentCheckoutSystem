@@ -407,7 +407,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             Assert.Throws<ArgumentException>(act);
         }
         #endregion
-        #region GetEquipmentBySerialTests
+        #region GetCheckableBySerialTests
         [Fact]
         public void GetEquipmentBySerial_ReturnsCorrectEquipment()
         {
@@ -416,7 +416,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             var expected = _context.Equipment.Single(e => e.SerialNumber == 100);
 
             //When
-            var actual = service.GetEquipmentBySerial(100);
+            var actual = service.GetCheckableBySerial(100);
 
             //Then
             // TODO: consider overloading equality on equipment
@@ -433,7 +433,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             var service = new CheckoutService(_context);
 
             //When
-            Action act = () => service.GetEquipmentBySerial(009);
+            Action act = () => service.GetCheckableBySerial(009);
             
             //Then
             Assert.Throws<ArgumentException>(act);
