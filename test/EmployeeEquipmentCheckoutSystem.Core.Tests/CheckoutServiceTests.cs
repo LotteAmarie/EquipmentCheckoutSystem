@@ -460,7 +460,27 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.Contains(employee, _context.Employees);
         }
-        
+        [Fact]
+        public void AddEmployee_ThrowsArgumentExceptionOnIdCollision()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = new Employee 
+            {
+                Id = 001,
+                CheckedItems = new List<ICheckable> { },
+                CheckedItemHistory = new List<ICheckable> { },
+                EMailAddress = "001@somewhere.com",
+                MaximumSafetyClearance = SafetyLevel.A
+            };
+            
+            //When
+            Action act = () => service.AddEmployee(employee);
+            
+            //Then
+            Assert.Throws<ArgumentException>(act);
+        }
+
         #endregion
         #region AddCheckable
 

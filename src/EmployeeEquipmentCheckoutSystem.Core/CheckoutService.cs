@@ -115,6 +115,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public void AddEmployee(Employee employee)
         {
+            if (_context.Employees.Any(e => e.Id == employee.Id))
+                throw new ArgumentException("Cannot enter duplicate employee");
+
             _context.Employees.Add(employee);
             _context.SaveChanges();
         }
