@@ -440,7 +440,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             Assert.Throws<ArgumentException>(act);
         }
         #endregion
-        #region AddEmployee
+        #region AddEmployeeTests
         [Fact]
         public void AddEmployee_SuccessfullyAddsEmployee()
         {
@@ -483,7 +483,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         }
 
         #endregion
-        #region AddCheckable
+        #region AddCheckableTests
         [Fact]
         public void AddCheckable_SuccessfullyAddsCheckable()
         {
