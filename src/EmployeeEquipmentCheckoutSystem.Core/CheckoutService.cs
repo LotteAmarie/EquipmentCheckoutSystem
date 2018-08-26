@@ -124,7 +124,9 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public void RemoveCheckable(ICheckable checkable)
         {
-
+            _context.Equipment.Attach(checkable);
+            _context.Equipment.Remove(checkable);
+            _context.SaveChanges();
         }
     }
 }
