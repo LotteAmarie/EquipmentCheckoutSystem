@@ -526,5 +526,30 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             Assert.Throws<ArgumentException>(act);
         }
         #endregion
+        #region RemoveEmployeeTests
+        [Fact]
+        public void RemoveEmployee_SuccessfullyRemovesEmployee()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var employee = new Employee 
+            {
+                Id = 001,
+                CheckedItems = new List<ICheckable> { },
+                CheckedItemHistory = new List<ICheckable> { },
+                EMailAddress = "001@somewhere.com",
+                MaximumSafetyClearance = SafetyLevel.A
+            };
+
+            //When
+            service.RemoveEmployee(employee);
+            
+            //Then
+            Assert.DoesNotContain(employee, _context.Employees);
+        }
+        #endregion
+        #region RemoveCheckableTests
+
+        #endregion
     }
 }

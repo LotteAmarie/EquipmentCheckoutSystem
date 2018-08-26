@@ -112,5 +112,15 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             _context.Equipment.Add(checkable);
             _context.SaveChanges();
         }
+
+        public void RemoveEmployee(Employee employee)
+        {
+
+        }
+
+        public void RemoveCheckable(ICheckable checkable)
+        {
+            
+        }
     }
 }
