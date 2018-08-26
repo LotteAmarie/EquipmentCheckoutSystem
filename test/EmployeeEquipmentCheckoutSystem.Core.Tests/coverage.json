@@ -1,0 +1,422 @@
+{
+  ".\\bin\\Debug\\netcoreapp2.0\\EmployeeEquipmentCheckoutSystem.Core.dll": {
+    "C:\\Users\\Lotte\\Desktop\\CEIS400_CourseProject\\src\\EmployeeEquipmentCheckoutSystem.Core\\CheckoutService.cs": {
+      "EmployeeEquipmentCheckoutSystem.Core.CheckoutService": {
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::Checkout(System.Int32,System.Int32)": {
+          "Lines": {
+            "18": 7,
+            "19": 7,
+            "20": 7,
+            "22": 7,
+            "23": 5,
+            "24": 5,
+            "25": 5,
+            "26": 5,
+            "28": 5,
+            "30": 5,
+            "33": 2,
+            "34": 7
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 22,
+              "Offset": 23,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 22,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 5
+            },
+            {
+              "Line": 22,
+              "Offset": 37,
+              "EndOffset": 90,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::Checkout(System.Int32,System.Collections.Generic.IEnumerable`1<System.Int32>)": {
+          "Lines": {
+            "37": 0,
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::CheckIn(System.Int32,System.Int32)": {
+          "Lines": {
+            "43": 7,
+            "44": 7,
+            "45": 7,
+            "47": 7,
+            "48": 5,
+            "49": 5,
+            "50": 5,
+            "51": 5,
+            "53": 5,
+            "54": 5,
+            "57": 2,
+            "58": 7
+          },
+          "Branches": [
+            {
+              "Line": 47,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 47,
+              "Offset": 23,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 47,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 5
+            },
+            {
+              "Line": 47,
+              "Offset": 39,
+              "EndOffset": 92,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::CheckIn(System.Int32,System.Collections.Generic.IEnumerable`1<System.Int32>)": {
+          "Lines": {
+            "61": 0,
+            "63": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::RequestItem(System.Int32,System.Int32)": {
+          "Lines": {
+            "67": 6,
+            "68": 6,
+            "69": 6,
+            "71": 6,
+            "72": 6,
+            "73": 6,
+            "74": 3,
+            "75": 3,
+            "77": 3,
+            "78": 3,
+            "81": 3,
+            "82": 6
+          },
+          "Branches": [
+            {
+              "Line": 71,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 71,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 4
+            },
+            {
+              "Line": 71,
+              "Offset": 23,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 71,
+              "Offset": 37,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            },
+            {
+              "Line": 71,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 3
+            },
+            {
+              "Line": 71,
+              "Offset": 51,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.CheckoutService::RequestItem(System.Int32,System.Collections.Generic.IEnumerable`1<System.Int32>)": {
+          "Lines": {
+            "85": 0,
+            "87": 0
+          },
+          "Branches": []
+        },
+        "EmployeeEquipmentCheckoutSystem.Core.Data.Employee EmployeeEquipmentCheckoutSystem.Core.CheckoutService::GetEmployeeById(System.Int32)": {
+          "Lines": {
+            "92": 22,
+            "94": 22,
+            "95": 22,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "101": 21
+          },
+          "Branches": []
+        },
+        "EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable EmployeeEquipmentCheckoutSystem.Core.CheckoutService::GetCheckableBySerial(System.Int32)": {
+          "Lines": {
+            "105": 22,
+            "107": 22,
+            "108": 22,
+            "110": 1,
+            "111": 1,
+            "112": 1,
+            "114": 21
+          },
+          "Branches": []
+        },
+        "System.Void EmployeeEquipmentCheckoutSystem.Core.CheckoutService::AddEmployee(EmployeeEquipmentCheckoutSystem.Core.Data.Employee)": {
+          "Lines": {
+            "117": 2,
+            "118": 2,
+            "119": 1,
+            "121": 1,
+            "122": 1,
+            "123": 1
+          },
+          "Branches": [
+            {
+              "Line": 118,
+              "Offset": 145,
+              "EndOffset": 147,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 118,
+              "Offset": 145,
+              "EndOffset": 158,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void EmployeeEquipmentCheckoutSystem.Core.CheckoutService::AddCheckable(EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable)": {
+          "Lines": {
+            "126": 2,
+            "127": 2,
+            "128": 1,
+            "130": 1,
+            "131": 1,
+            "132": 1
+          },
+          "Branches": [
+            {
+              "Line": 127,
+              "Offset": 145,
+              "EndOffset": 147,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 127,
+              "Offset": 145,
+              "EndOffset": 158,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void EmployeeEquipmentCheckoutSystem.Core.CheckoutService::.ctor(EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext)": {
+          "Lines": {
+            "12": 27,
+            "13": 27,
+            "14": 27,
+            "15": 27
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Lotte\\Desktop\\CEIS400_CourseProject\\src\\EmployeeEquipmentCheckoutSystem.Core\\EmployeeExtensions.cs": {
+      "EmployeeEquipmentCheckoutSystem.Core.EmployeeExtensions": {
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.EmployeeExtensions::IsAuthorizedFor(EmployeeEquipmentCheckoutSystem.Core.Data.Employee,EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable)": {
+          "Lines": {
+            "8": 12,
+            "9": 12,
+            "10": 9,
+            "11": 3,
+            "12": 12
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 9
+            },
+            {
+              "Line": 9,
+              "Offset": 20,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Lotte\\Desktop\\CEIS400_CourseProject\\src\\EmployeeEquipmentCheckoutSystem.Core\\CheckoutContext.cs": {
+      "EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<EmployeeEquipmentCheckoutSystem.Core.Data.Employee> EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext::get_Employees()": {
+          "Lines": {
+            "10": 87
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable> EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext::get_Equipment()": {
+          "Lines": {
+            "11": 90
+          },
+          "Branches": []
+        },
+        "System.Void EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext::OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void EmployeeEquipmentCheckoutSystem.Core.Data.CheckoutContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Lotte\\Desktop\\CEIS400_CourseProject\\src\\EmployeeEquipmentCheckoutSystem.Core\\Data\\Employee.cs": {
+      "EmployeeEquipmentCheckoutSystem.Core.Data.Employee": {
+        "System.Int32 EmployeeEquipmentCheckoutSystem.Core.Data.Employee::get_Id()": {
+          "Lines": {
+            "7": 234
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable> EmployeeEquipmentCheckoutSystem.Core.Data.Employee::get_CheckedItems()": {
+          "Lines": {
+            "8": 128
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<EmployeeEquipmentCheckoutSystem.Core.Data.ICheckable> EmployeeEquipmentCheckoutSystem.Core.Data.Employee::get_CheckedItemHistory()": {
+          "Lines": {
+            "10": 122
+          },
+          "Branches": []
+        },
+        "System.String EmployeeEquipmentCheckoutSystem.Core.Data.Employee::get_EMailAddress()": {
+          "Lines": {
+            "12": 118
+          },
+          "Branches": []
+        },
+        "EmployeeEquipmentCheckoutSystem.Core.Data.SafetyLevel EmployeeEquipmentCheckoutSystem.Core.Data.Employee::get_MaximumSafetyClearance()": {
+          "Lines": {
+            "13": 130
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Lotte\\Desktop\\CEIS400_CourseProject\\src\\EmployeeEquipmentCheckoutSystem.Core\\Data\\Equipment.cs": {
+      "EmployeeEquipmentCheckoutSystem.Core.Data.Equipment": {
+        "System.Int32 EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_SerialNumber()": {
+          "Lines": {
+            "7": 298
+          },
+          "Branches": []
+        },
+        "System.String EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_Location()": {
+          "Lines": {
+            "8": 90
+          },
+          "Branches": []
+        },
+        "System.Int32 EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_LastCheckedById()": {
+          "Lines": {
+            "10": 102
+          },
+          "Branches": []
+        },
+        "System.Boolean EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_IsAvailable()": {
+          "Lines": {
+            "11": 122
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.Int32> EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_RequestedByIds()": {
+          "Lines": {
+            "13": 97
+          },
+          "Branches": []
+        },
+        "EmployeeEquipmentCheckoutSystem.Core.Data.SafetyLevel EmployeeEquipmentCheckoutSystem.Core.Data.Equipment::get_RequiredSafetyLevel()": {
+          "Lines": {
+            "14": 102
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
