@@ -33,12 +33,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             return false;
         }
 
-        public bool Checkout(int employeeId, IEnumerable<int> itemSerials)
-        {
-            // TODO:
-            throw new NotImplementedException();
-        }
-
         public bool CheckIn(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
@@ -57,12 +51,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             return false;
         }
 
-        public bool CheckIn(int employeeId, IEnumerable<int> itemSerials)
-        {
-            // TODO:
-            throw new NotImplementedException();
-        }
-
         public bool RequestItem(int employeeId, int itemSerial)
         {
             var employee = GetEmployeeById(employeeId);
@@ -79,12 +67,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core
             }
 
             return false;
-        }
-
-        public bool RequestItem(int employeeId, IEnumerable<int> itemSerials)
-        {
-            // TODO:
-            throw new NotImplementedException();
         }
 
         /// <exception cref="System.ArgumentException">Thrown when given invalid id</exception>
