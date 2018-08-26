@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EmployeeEquipmentCheckoutSystem.Core.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
 {
@@ -116,7 +117,8 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public void RemoveEmployee(Employee employee)
         {
-            _context.Employees.Remove(GetEmployeeById(employee.Id)); // TODO: this is kind of messy
+            _context.Employees.Attach(employee);
+            _context.Employees.Remove(employee);
             _context.SaveChanges();
         }
 

@@ -97,6 +97,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             dbSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
             dbSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
             dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>((s) => sourceList.Add(s));
+            dbSet.Setup(m => m.Remove(It.IsAny<T>())).Callback<T>((entity) => sourceList.Remove(entity));
 
             return dbSet.Object;
         }
@@ -532,14 +533,7 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         {
             //Given
             var service = new CheckoutService(_context);
-            var employee = new Employee 
-            {
-                Id = 001,
-                CheckedItems = new List<ICheckable> { },
-                CheckedItemHistory = new List<ICheckable> { },
-                EMailAddress = "001@somewhere.com",
-                MaximumSafetyClearance = SafetyLevel.A
-            };
+            var employee = _context.Employees.First(e => e.Id == 001);
 
             //When
             service.RemoveEmployee(employee);
@@ -549,7 +543,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
         }
         #endregion
         #region RemoveCheckableTests
+        [Fact]
+        public void RemoveCheckable_SuccessfullyRemovesCheckable()
+        {
+            //Given
+            var service = new CheckoutService(_context);
+            var item = _context.Equipment.First(e => e.SerialNumber == 100);
 
+            //When
+            service.RemoveCheckable(item);
+            
+            //Then
+            Assert.DoesNotContain(item, _context.Equipment);
+        }
         #endregion
     }
 }
