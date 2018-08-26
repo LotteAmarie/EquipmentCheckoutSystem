@@ -5,6 +5,7 @@ using EmployeeEquipmentCheckoutSystem.Core.Data;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
 {
+    // TODO: Async
     public class CheckoutService
     {
         private CheckoutContext _context;
@@ -115,12 +116,13 @@ namespace EmployeeEquipmentCheckoutSystem.Core
 
         public void RemoveEmployee(Employee employee)
         {
-
+            _context.Employees.Remove(GetEmployeeById(employee.Id)); // TODO: this is kind of messy
+            _context.SaveChanges();
         }
 
         public void RemoveCheckable(ICheckable checkable)
         {
-            
+
         }
     }
 }
