@@ -11,6 +11,6 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Data
         // TODO: Contact method interface
         public string EMailAddress { get; set; }
         public SafetyLevel MaximumSafetyClearance { get; set; }
-        public bool SystemAdmin { get; set; }
+        public bool IsSystemAdmin { get; set; }
     }
 }
