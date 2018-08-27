@@ -1,6 +1,6 @@
 using EmployeeEquipmentCheckoutSystem.Core.Data;
 
-namespace EmployeeEquipmentCheckoutSystem.Core
+namespace EmployeeEquipmentCheckoutSystem.Core.Extensions
 {
     public static class EmployeeExtensions
     {

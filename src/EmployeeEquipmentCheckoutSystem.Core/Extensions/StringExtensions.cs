@@ -1,11 +1,14 @@
-namespace EmployeeEquipmentCheckoutSystem.ConsoleLayer
+using System.Linq;
+
+namespace EmployeeEquipmentCheckoutSystem.Core.Extensions
 {
-    public class StringExtensions
+    public static class StringExtensions
     {
         public static string RemoveWhitespace(this string input)
         {
             return new string(input.ToCharArray()
-                .Where(c => ))
+                .Where(c => !char.IsWhiteSpace(c))
+                .ToArray());
         }
     }
 }

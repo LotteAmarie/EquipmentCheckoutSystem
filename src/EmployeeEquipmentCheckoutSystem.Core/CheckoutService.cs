@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EmployeeEquipmentCheckoutSystem.Core.Data;
+using EmployeeEquipmentCheckoutSystem.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
