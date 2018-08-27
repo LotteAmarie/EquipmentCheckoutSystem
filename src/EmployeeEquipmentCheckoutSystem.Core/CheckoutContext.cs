@@ -1,3 +1,4 @@
+using EmployeeEquipmentCheckoutSystem.Core.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeEquipmentCheckoutSystem.Core
