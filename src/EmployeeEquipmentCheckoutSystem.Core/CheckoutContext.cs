@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace EmployeeEquipmentCheckoutSystem.Core.Data
+namespace EmployeeEquipmentCheckoutSystem.Core
 {
     /// <summary>
     /// EF Core DbContext for working with Employee Checkouts.
