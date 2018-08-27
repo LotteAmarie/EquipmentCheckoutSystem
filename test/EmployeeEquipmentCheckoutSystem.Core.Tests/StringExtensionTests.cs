@@ -18,5 +18,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void RemoveDigits_RemovesDigits()
+        {
+            //Given
+            var s = "here are some digits 1234";
+            var expected = "here are some digits ";
+
+            //When
+            var actual = s.RemoveDigits();
+
+            //Then
+            Assert.Equal(expected, actual);
+        }
     }
 }
