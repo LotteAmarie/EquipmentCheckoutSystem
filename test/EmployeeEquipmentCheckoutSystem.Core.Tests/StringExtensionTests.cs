@@ -32,5 +32,19 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Tests
             //Then
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void OnlyDigits_ReturnsOnlyDigits()
+        {
+            //Given
+            var s = "here are some digits 1234";
+            var expected = "1234";
+
+            //When
+            var actual = s.OnlyDigits();
+
+            //Then
+            Assert.Equal(expected, actual);
+        }
     }
 }

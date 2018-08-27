@@ -17,5 +17,12 @@ namespace EmployeeEquipmentCheckoutSystem.Core.Extensions
                 .Where(c => !char.IsDigit(c))
                 .ToArray());
         }
+
+        public static string OnlyDigits(this string input)
+        {
+            return new string(input.ToCharArray()
+                .Where(c => char.IsDigit(c))
+                .ToArray());
+        }
     }
 }
