@@ -80,7 +80,7 @@ namespace EmployeeEquipmentCheckoutSystem.ConsoleLayer
                                     service.CheckIn(user.Id, itemSerial);
                                 }
                             }
-                            catch (ArgumentException) // TODO: More detailed error messages
+                            catch (ArgumentException) // TODO: Several fail states here, include more detailed error messages
                             {
                                 Console.WriteLine("Error: Item serial given is either invalid or does not exist.");
                             }
