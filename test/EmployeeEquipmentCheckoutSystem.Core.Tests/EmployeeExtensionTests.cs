@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using EmployeeEquipmentCheckoutSystem.Core.Data;
+using EmployeeEquipmentCheckoutSystem.Core.Extensions;
 using Xunit;
 
 namespace EmployeeEquipmentCheckoutSystem.Core.Tests
